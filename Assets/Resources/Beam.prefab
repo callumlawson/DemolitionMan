@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6587886691413104897}
   - component: {fileID: 4912133535030090001}
   - component: {fileID: 1157513284792432801}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3619496836226583965}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 4}
   m_Children: []
   m_Father: {fileID: 3725354307862528662}
   m_RootOrder: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 3725354307862528662}
   - component: {fileID: 4275531217680198995}
   - component: {fileID: 7135848436122345227}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,5 +137,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 0.15, y: 0.15, z: 4}
+  m_Center: {x: 0, y: 0, z: 2}
