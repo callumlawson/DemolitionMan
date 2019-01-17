@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 114967586934651944}
   m_Layer: 0
   m_Name: ExampleCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,9 +197,7 @@ MonoBehaviour:
   JumpSpeed: 10
   JumpPreGroundingGraceTime: 0
   JumpPostGroundingGraceTime: 0
-  IgnoredColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  IgnoredColliders: []
   OrientTowardsGravity: 1
   Gravity: {x: 0, y: -30, z: 0}
   MeshRoot: {fileID: 4036232530805280}
