@@ -9,7 +9,7 @@ public class BuildingCreator : EditorWindow
     private int width = 6;
     private int height = 6;
     private int depth = 6;
-    private int beamLength = 3;
+    private float beamLength = 3;
     private int beamMass = 10;
     private float breakForce = 10000;
     private float breakTorque = 10000;
@@ -33,10 +33,12 @@ public class BuildingCreator : EditorWindow
 
     private void OnGUI()
     {
+        EditorGUILayout.LabelField("Building Dimentions");
         width = EditorGUILayout.IntField("Width", width);
         height = EditorGUILayout.IntField("Height", height);
         depth = EditorGUILayout.IntField("Depth", depth);
-        beamLength = EditorGUILayout.IntField("Beam Length", beamLength);
+        EditorGUILayout.LabelField("Beam Properties");
+        beamLength = EditorGUILayout.FloatField("Beam Length", beamLength);
         beamMass = EditorGUILayout.IntField("Beam Mass", beamMass);
         breakForce = EditorGUILayout.FloatField("Break Force", breakForce);
         breakTorque = EditorGUILayout.FloatField("Break Torque", breakTorque);
@@ -162,20 +164,32 @@ public class BuildingCreator : EditorWindow
                                 if (beamToConnect.beam != thisBeam)
                                 {
                                     var joint = thisBeam.AddComponent<ConfigurableJoint>();
-                                    joint.xMotion = ConfigurableJointMotion.Locked;
-                                    joint.yMotion = ConfigurableJointMotion.Locked;
-                                    joint.zMotion = ConfigurableJointMotion.Locked;
-                                    joint.angularXMotion = ConfigurableJointMotion.Locked;
-                                    joint.angularYMotion = ConfigurableJointMotion.Locked;
-                                    joint.angularZMotion = ConfigurableJointMotion.Locked;
+                                    joint.xMotion = ConfigurableJointMotion.Limited;
+                                    joint.yMotion = ConfigurableJointMotion.Limited;
+                                    joint.zMotion = ConfigurableJointMotion.Limited;
+                                    joint.angularXMotion = ConfigurableJointMotion.Limited;
+                                    joint.angularYMotion = ConfigurableJointMotion.Limited;
+                                    joint.angularZMotion = ConfigurableJointMotion.Limited;
+
+                                    var softLimit = new SoftJointLimitSpring
+                                    {
+                                        spring = 99999,
+                                        damper = 0
+                                    };
+                                    joint.linearLimitSpring = softLimit;
+                                    joint.angularXLimitSpring = softLimit;
+                                    joint.angularYZLimitSpring = softLimit;
+
                                     joint.projectionMode = JointProjectionMode.None;
                                     joint.projectionDistance = 5f;
                                     joint.projectionAngle = 20f;
-                                    joint.breakForce = 10000;
-                                    joint.breakTorque = 7000;
+                                    joint.breakForce = breakForce;
+                                    joint.breakTorque = breakTorque;
                                     joint.connectedBody = beamToConnect.beam.GetComponent<Rigidbody>();
                                     joint.enablePreprocessing = false;
                                     joint.enableCollision = false;
+//                                    joint.massScale = 0.1f;
+//                                    joint.connectedMassScale = 0.1f;
                                     //If we are connecting to things at our root
                                     if (connection.Item1 == w && connection.Item2 == h)
                                     {

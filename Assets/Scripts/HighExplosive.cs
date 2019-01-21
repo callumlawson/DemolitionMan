@@ -32,5 +32,6 @@ public class HighExplosive : MonoBehaviour
                 rb.AddForceAtPosition(directionVector * ExplosionForce * 1 / distance, center);
             }
         }
+        Destroy(gameObject);
     }
 }

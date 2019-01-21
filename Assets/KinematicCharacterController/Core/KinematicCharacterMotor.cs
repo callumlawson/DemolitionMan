@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace KinematicCharacterController
 {
@@ -189,7 +190,7 @@ namespace KinematicCharacterController
         /// <summary>
         /// Physics material of the character's capsule
         /// </summary>
-        [SerializeField]
+        [SerializeField, UsedImplicitly]
         [Tooltip("Physics material of the Character Capsule (Does not affect character movement. Only affects things colliding with it)")]
         private PhysicMaterial CapsulePhysicsMaterial;
 
